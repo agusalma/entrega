@@ -36,7 +36,11 @@ while attempts > 0:
     print(f"Letras usadas: {', '.join(guessed)}")
     
     letter = input("Ingresá una letra: ")
-    
+
+    if len(letter)!= 1 or not letter.isalpha():
+        print('Entrada no valida')
+        continue
+
     if letter in guessed:
         print("Ya usaste esa letra.")
     elif letter in word:
