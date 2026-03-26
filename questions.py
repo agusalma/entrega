@@ -1,21 +1,40 @@
 import random
 
-words = [
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
-]
+categorias = {
+    "Programacion": ["python", "variable", "funcion", "bucle", "lista", "cadena"],
+    "Utiles": ["cartuchera", "lapiz", "goma", "regla", "compas", "tijera"],
+    "Comidas": ["manzana", "fideos", "sushi", "milanesa", "guiso", "pure"]
+}
 
-word = random.choice(words)
+print("¡Bienvenido al Ahorcado!")
+print()
+
+print("categorias disponibles:")
+
+nombres_categorias = list(categorias.keys())
+for cat in nombres_categorias:
+    print(f'{cat}')
+
+while True:
+    num_categoria = input("elija el numero de la categoria: ")
+    
+    if num_categoria.isdigit():
+        categ_bien = int(num_categoria) 
+    
+        if 1 <= categ_bien <= len(nombres_categorias):
+            categoria_elegida = nombres_categorias[categ_bien - 1]
+            break
+        else:
+            print(f"elija entre 1 y {len(nombres_categorias)}.")
+    else:
+        print("Entrada no valida. ingrese un número entero.")
+        
+
+word = random.choice(categorias[categoria_elegida])
 guessed = []
 attempts = 6
 
-print("¡Bienvenido al Ahorcado!")
+print(f'categoria elegida: {categoria_elegida}, empezamos')
 print()
 
 puntaje_total = 0
